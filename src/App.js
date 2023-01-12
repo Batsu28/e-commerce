@@ -10,34 +10,39 @@ import { useState } from "react";
 import Profile from "./pages/Profile";
 
 function App() {
-  const [isLoggedIn, setLoggedIn] = useState(false);
-  const [logInuser, setLogIn] = useState(users);
+	const [isLoggedIn, setLoggedIn] = useState(false);
+	const [logInuser, setLogIn] = useState(users);
 
-  function checkLogIn(username, password) {
-    logInuser.map((user) => {
-      if (user.username === username && user.password === password) {
-        console.log("logged in");
-        setLoggedIn(true);
-      } else {
-        console.error("no");
-      }
-    });
-  }
-  return (
-    <div className="App">
-      <Header isLoggedIn={isLoggedIn} />
-      <Routes>
-        <Route path={MENUS[0].url} element={<Home />} />
-        <Route path={MENUS[1].url} element={<About />} />
-        {isLoggedIn ? (
-          <Route path={MENUS[3].url} element={<Profile />} />
-        ) : (
-          <Route path={MENUS[2].url} element={<LogIn check={checkLogIn} />} />
-        )}
-      </Routes>
-      <Footer />
-    </div>
-  );
+	function checkLogIn(username, password) {
+		logInuser.map((user) => {
+			if (user.username === username && user.password === password) {
+				console.log("logged in");
+				setLoggedIn(true);
+			} else {
+				console.error("no");
+			}
+		});
+	}
+	return (
+		<div className="App">
+			<Header isLoggedIn={isLoggedIn} />
+			<Routes>
+				<Route
+					path={MENUS[0].url}
+					element={<Home />}
+				/>
+				<Route
+					path={MENUS[1].url}
+					element={<About />}
+				/>
+				<Route
+					path={isLoggedIn ? MENUS[3].url : MENUS[2].url}
+					element={isLoggedIn ? <Profile /> : <LogIn check={checkLogIn} />}
+				/>
+			</Routes>
+			<Footer />
+		</div>
+	);
 }
 
 export default App;
