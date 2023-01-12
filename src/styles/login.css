@@ -1,0 +1,32 @@
+.login {
+  display: flex;
+  justify-content: center;
+}
+.login_box {
+  padding: 30px;
+  width: 300px;
+  height: 300px;
+  border: 1px solid black;
+  border-radius: 20px;
+}
+.login_inputs {
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.login_inputs input {
+  padding: 20px;
+  width: 200px;
+  height: 50px;
+  border: none;
+  background-color: aquamarine;
+  border-radius: 20px;
+  font-size: 20px;
+}
+.login_btn {
+  margin: 20px;
+  display: flex;
+  justify-content: space-around;
+}

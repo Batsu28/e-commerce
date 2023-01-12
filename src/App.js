@@ -1,23 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import LogIn from "./pages/LogIn";
+import { MENUS, users } from "./util/data";
+import { Routes, Route } from "react-router-dom";
+import Header from "./Components/Header";
+import Footer from "./Components/Footer";
+import { useState } from "react";
+import Profile from "./pages/Profile";
 
 function App() {
+  const [isLoggedIn, setLoggedIn] = useState(false);
+  const [logInuser, setLogIn] = useState(users);
+
+  function checkLogIn(username, password) {
+    logInuser.map((user) => {
+      if (user.username === username && user.password === password) {
+        console.log("logged in");
+        setLoggedIn(true);
+      } else {
+        console.error("no");
+      }
+    });
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header isLoggedIn={isLoggedIn} />
+      <Routes>
+        <Route path={MENUS[0].url} element={<Home />} />
+        <Route path={MENUS[1].url} element={<About />} />
+        {isLoggedIn ? (
+          <Route path={MENUS[3].url} element={<Profile />} />
+        ) : (
+          <Route path={MENUS[2].url} element={<LogIn check={checkLogIn} />} />
+        )}
+      </Routes>
+      <Footer />
     </div>
   );
 }

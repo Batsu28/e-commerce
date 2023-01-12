@@ -1,0 +1,19 @@
+header {
+  background: grey;
+}
+.header {
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header nav {
+  width: 30%;
+}
+.header nav ul {
+  display: flex;
+  justify-content: space-between;
+}
+.header nav li {
+  list-style: none;
+}
