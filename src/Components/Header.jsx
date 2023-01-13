@@ -2,12 +2,12 @@ import "../styles/header.css";
 import Navbar from "./sub-components/Navbar";
 
 export default function Header(prop) {
-  const { isLoggedIn } = prop;
+  const { MENUS } = prop;
   return (
     <header>
       <div className="container">
         <div className="header">
-          <Navbar isLoggedIn={isLoggedIn} />
+          <Navbar MENUS={MENUS} />
         </div>
       </div>
     </header>

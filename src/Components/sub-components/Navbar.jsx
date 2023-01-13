@@ -1,19 +1,20 @@
 import { useState } from "react";
-import { MENUS } from "../../util/data";
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar(prop) {
-	const { isLoggedIn } = prop;
-	const [showMenus, setMenus] = useState(MENUS);
+  const { MENUS } = prop;
+  const navigate = useNavigate();
 
-	return (
-		<nav>
-			<ul>
-				{showMenus.map((menu, index) => (
-					<li key={index}>
-						<a href={menu.url}>{menu.name}</a>
-					</li>
-				))}
-			</ul>
-		</nav>
-	);
+  console.log("1 ", MENUS);
+  return (
+    <nav>
+      <ul>
+        {MENUS.map((menu, index) => (
+          <li key={index}>
+            <button onClick={() => navigate(menu.url)}>{menu.name}</button>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
 }

@@ -1,7 +1,15 @@
-export default function Profile() {
+export default function Profile(prop) {
+  const { setLoggedIn } = prop;
   return (
     <div className="profile">
-      <div>hi</div>
+      <button
+        onClick={() => {
+          console.log("check");
+          return setLoggedIn(false);
+        }}
+      >
+        Log Out
+      </button>
     </div>
   );
 }
