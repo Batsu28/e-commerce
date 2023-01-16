@@ -8,10 +8,11 @@ export default function LogIn(prop) {
   function LogInHandler(e) {
     e.preventDefault();
     check(e.target.username.value, e.target.password.value);
-    navigate("/profile");
+    navigate("/");
   }
   return (
     <div className="login">
+      <div onClick={() => navigate("/")} className="login_close"></div>
       <form className="login_box" onSubmit={LogInHandler}>
         <div className="login_inputs">
           <input type="text" name="username" placeholder="username" />
@@ -19,7 +20,6 @@ export default function LogIn(prop) {
         </div>
         <div className="login_btn">
           <button type="submit">Log In</button>
-          <input type="button" value={"register"} />
         </div>
       </form>
     </div>

@@ -1,1 +1,29 @@
-
+.home {
+  min-height: calc(100vh - 200px);
+}
+.home_nav {
+  display: flex;
+  justify-content: space-between;
+  font-size: 28px;
+  color: #003585;
+}
+.home_nav nav {
+  width: 70%;
+}
+.home_nav nav ul {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+}
+.home_nav nav ul li button {
+  border: #003585 solid 2px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  background: #fff;
+  font-size: 20px;
+  color: #003585;
+}
+.popular_products {
+  display: flex;
+  flex-wrap: wrap;
+}
