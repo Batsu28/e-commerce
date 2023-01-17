@@ -47,6 +47,9 @@
   justify-content: center;
   cursor: pointer;
 }
+.header_search input {
+  color: black;
+}
 .header nav li button {
   border: none;
   background: none;

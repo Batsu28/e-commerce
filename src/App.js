@@ -6,10 +6,11 @@ import About from "./pages/About";
 import LogIn from "./pages/LogIn";
 import Profile from "./pages/Profile";
 import Product from "./pages/Product";
-import { MENUS, users, data } from "./util/data";
+import { MENUS, users } from "./util/data";
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import Products from "./pages/Products";
+import Searched from "./pages/Searched";
 
 function App() {
   const [isLoggedIn, setLoggedIn] = useState(false);
@@ -38,6 +39,7 @@ function App() {
         />
         <Route path="/products" element={<Products />} />
         <Route path="/products/:id" element={<Product />} />
+        <Route path="/search/:test" element={<Searched />} />
       </Routes>
       <Footer />
     </div>
