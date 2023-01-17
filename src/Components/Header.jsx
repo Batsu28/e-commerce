@@ -16,7 +16,7 @@ export default function Header(prop) {
             <img
               src="./image/logo.png"
               alt="logo"
-              onClick={() => navigaion("/")}
+              onClick={() => navigate("/")}
             />
           </div>
           <div className="header_search">

@@ -1,0 +1,39 @@
+.product {
+  margin: 50px;
+  display: flex;
+}
+.product_image {
+  width: 600px;
+  height: 300px;
+}
+.product_image img {
+  width: 100%;
+  height: 100%;
+}
+.product_info {
+  margin: 10px;
+  padding: 10px 30px;
+  text-align: start;
+}
+.product_price {
+  display: flex;
+  gap: 20px;
+  font-size: 30px;
+}
+.product_price div {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.product b {
+  font-size: 20px;
+}
+.back_btn {
+  margin: 0 10px;
+  border: #003585 solid 2px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  background: #fff;
+  font-size: 20px;
+  color: #003585;
+}

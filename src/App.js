@@ -5,9 +5,11 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import LogIn from "./pages/LogIn";
 import Profile from "./pages/Profile";
-import { MENUS, users } from "./util/data";
+import Product from "./pages/Product";
+import { MENUS, users, data } from "./util/data";
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
+import Products from "./pages/Products";
 
 function App() {
   const [isLoggedIn, setLoggedIn] = useState(false);
@@ -34,6 +36,8 @@ function App() {
           path="/profile"
           element={<Profile setLoggedIn={setLoggedIn} />}
         />
+        <Route path="/products" element={<Products />} />
+        <Route path="/products/:id" element={<Product />} />
       </Routes>
       <Footer />
     </div>
