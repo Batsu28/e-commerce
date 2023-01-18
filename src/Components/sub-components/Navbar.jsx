@@ -4,6 +4,7 @@ import { data } from "../../util/data";
 export default function Navbar(prop) {
   const { setShowProduct } = prop;
   const { MENUS } = prop;
+
   function filterName(e) {
     if (e.target.innerText.toLowerCase() === "all") {
       setShowProduct(data);

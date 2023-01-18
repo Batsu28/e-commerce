@@ -1,9 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import "../styles/header.css";
 import { MENUS } from "../util/data";
-import Sags from "./icons/Sags";
+import Cart from "./icons/Cart";
 import { useState } from "react";
-import Searched from "../pages/Searched";
 
 export default function Header(prop) {
   const { setLoggedIn } = prop;
@@ -12,7 +11,7 @@ export default function Header(prop) {
 
   function SearchPage() {
     navigate(`/search/${searchVal}`);
-    console.log(searchVal);
+    setSearchVal("");
   }
   return (
     <header>
@@ -28,9 +27,8 @@ export default function Header(prop) {
           <div className="header_search">
             <input
               type="text"
-              name=""
-              id=""
               placeholder="search"
+              value={searchVal}
               onChange={(e) => setSearchVal(e.target.value)}
             />
             <button onClick={SearchPage}>Search</button>
@@ -44,7 +42,7 @@ export default function Header(prop) {
                 Profile
               </div>
               <div>
-                <Sags />
+                <Cart />
               </div>
             </div>
           ) : (

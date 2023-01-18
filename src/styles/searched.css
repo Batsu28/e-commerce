@@ -1,0 +1,13 @@
+.searched {
+  min-height: calc(100vh - 200px);
+  text-align: start;
+}
+.search_text {
+  margin: 50px 0;
+  font-size: 24px;
+}
+.search_items {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}

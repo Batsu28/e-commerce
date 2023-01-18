@@ -10,7 +10,7 @@
 }
 .products ul li button {
   margin: 0 10px;
-  border: #003585 solid 2px;
+  border: #003585 solid 1px;
   padding: 5px 10px;
   border-radius: 20px;
   background: #fff;
@@ -20,4 +20,9 @@
 .all_products {
   display: flex;
   flex-wrap: wrap;
+}
+.products ul li button:focus {
+  background-color: #a7f65c;
+  color: #fff;
+  border-color: #a7f65c;
 }

@@ -1,4 +1,4 @@
-export default function Sags() {
+export default function Cart() {
   return (
     <svg
       width="25"
