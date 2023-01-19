@@ -1,11 +1,29 @@
-import Person from "../Components/icons/Person";
+import Person from "../icons/Person";
+import BoardIcon from "../icons/BoardIcon";
+import DisplayIcon from "../icons/DisplayIcon";
+import PaperIcon from "../icons/PaperIcon";
+import UsersIcon from "../icons/UsersIcon";
+import CaseIcon from "../icons/CaseIcon";
+import SettingIcon from "../icons/SettingIcon";
 
 export const MENUS = [
   { name: "LOG IN", url: "/login", image: <Person /> },
   { name: "SIGN UP", url: "/signup", image: <Person /> },
 ];
 
-export const users = [{ username: "user", password: "pass" }];
+export const users = [
+  { username: "user", password: "pass", role: "user" },
+  { username: "admin", password: "pass", role: "admin" },
+];
+
+export const SIDEMENUS = [
+  { name: "Хянах самбар", icon: <BoardIcon />, url: "" },
+  { name: "Бүтээгдэхүүнүүд", icon: <DisplayIcon />, url: "product" },
+  { name: "Захиалгууд", icon: <PaperIcon />, url: "order" },
+  { name: "Хэрэглэгчид", icon: <UsersIcon />, url: "user" },
+  { name: "Модератор", icon: <CaseIcon />, url: "moderator" },
+  { name: "Тохиргоо", icon: <SettingIcon />, url: "settings" },
+];
 
 export const category = [
   "all",

@@ -2,7 +2,7 @@ import { useState } from "react";
 import Card from "../Components/sub-components/Card";
 import Navbar from "../Components/sub-components/Navbar";
 import "../styles/products.css";
-import { data, category } from "../util/data";
+import { data, category } from "../../util/data";
 
 export default function Products() {
   const [showProduct, setShowProduct] = useState(data);

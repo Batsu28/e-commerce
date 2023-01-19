@@ -1,47 +1,75 @@
 import "./App.css";
-import Header from "./Components/Header";
-import Footer from "./Components/Footer";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import LogIn from "./pages/LogIn";
-import Profile from "./pages/Profile";
-import Product from "./pages/Product";
-import { MENUS, users } from "./util/data";
-import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
-import Products from "./pages/Products";
-import Searched from "./pages/Searched";
+import { useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import { users } from "./util/data";
+import LogIn from "./Login/LogIn";
+/*client*/ import Client from "./cilent/Client";
+import Home from "./cilent/pages/Home";
+import Profile from "./cilent/pages/Profile";
+import Products from "./cilent/pages/Products";
+import Product from "./cilent/pages/Product";
+import Searched from "./cilent/pages/Searched";
+/*admin*/ import Dashboard from "./dashboard/Dashboard";
+import AdminHome from "./dashboard/pages/AdminHome";
+import Users from "./dashboard/pages/Users";
+import AdminProduct from "./dashboard/pages/AdminProduct";
+import Order from "./dashboard/pages/Order";
+import Moderater from "./dashboard/pages/Moderator";
+import Settings from "./dashboard/pages/Settings";
 
 function App() {
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [logInuser, setLogIn] = useState(users);
-
+  const navigate = useNavigate();
+  console.log(localStorage.getItem("currentUser"));
   function checkLogIn(username, password) {
     logInuser.map((user) => {
       if (user.username === username && user.password === password) {
-        console.log("logged in");
-        setLoggedIn(true);
-      } else {
-        console.log("n");
+        if (user.role === "user") {
+          setLoggedIn(true);
+          navigate("/");
+          localStorage.setItem("currentUser", "user");
+        } else if (user.role === "admin") {
+          setLoggedIn(true);
+          navigate("/admin");
+          localStorage.setItem("currentUser", "admin");
+        }
       }
     });
   }
-
   return (
     <div className="App">
-      <Header setLoggedIn={isLoggedIn} />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path={MENUS[0].url} element={<LogIn check={checkLogIn} />} />
+        <Route path="/" element={<Client isLoggedIn={isLoggedIn} />}>
+          <Route path="/" element={<Home />} />
+          <Route
+            path="/profile"
+            element={<Profile setLoggedIn={setLoggedIn} />}
+          />
+          <Route path="/products" element={<Products />} />
+          <Route path="/products/:id" element={<Product />} />
+          <Route path="/search/:test" element={<Searched />} />
+        </Route>
         <Route
-          path="/profile"
-          element={<Profile setLoggedIn={setLoggedIn} />}
-        />
-        <Route path="/products" element={<Products />} />
-        <Route path="/products/:id" element={<Product />} />
-        <Route path="/search/:test" element={<Searched />} />
+          path="/admin"
+          element={
+            localStorage.getItem("currentUser") == "admin" ? (
+              <Dashboard setLoggedIn={setLoggedIn} />
+            ) : (
+              <>No access</>
+            )
+          }
+        >
+          <Route path="/admin/" element={<AdminHome />} />
+          <Route path="/admin/product" element={<AdminProduct />} />
+          <Route path="/admin/order" element={<Order />} />
+          <Route path="/admin/moderator" element={<Moderater />} />
+          <Route path="/admin/settings" element={<Settings />} />
+          <Route path="/admin/user" element={<Users />} />
+        </Route>
+        <Route path="/login" element={<LogIn checkLogIn={checkLogIn} />} />
       </Routes>
-      <Footer />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import "../../styles/card.css";
-import Cart from "../icons/Cart";
+import Cart from "../../../icons/Cart";
 
 export default function Card(prop) {
   const { product } = prop;

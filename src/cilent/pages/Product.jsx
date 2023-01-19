@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Card from "../Components/sub-components/Card";
 import "../styles/product.css";
-import { data } from "../util/data";
+import { data } from "../../util/data";
 
 export default function Product() {
   const navigate = useNavigate();

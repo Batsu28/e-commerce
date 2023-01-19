@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Card from "../Components/sub-components/Card";
 import Navbar from "../Components/sub-components/Navbar";
 import "../styles/home.css";
-import { data, category } from "../util/data";
+import { data, category } from "../../util/data";
 
 export default function Home() {
   const navigate = useNavigate();

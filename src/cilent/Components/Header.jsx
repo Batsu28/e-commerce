@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import "../styles/header.css";
-import { MENUS } from "../util/data";
-import Cart from "./icons/Cart";
+import { MENUS } from "../../util/data";
+import Cart from "../../icons/Cart";
 import { useState } from "react";
 
 export default function Header(prop) {
-  const { setLoggedIn } = prop;
+  const { isLoggedIn } = prop;
   const navigate = useNavigate();
   const [searchVal, setSearchVal] = useState("");
 
@@ -33,7 +33,7 @@ export default function Header(prop) {
             />
             <button onClick={SearchPage}>Search</button>
           </div>
-          {setLoggedIn ? (
+          {isLoggedIn ? (
             <div className="after_login">
               <div
                 onClick={() => navigate("/profile")}

@@ -8,12 +8,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 100px;
+  gap: 50px;
 }
 .home_shopNow {
   width: 300px;
-  height: 300px;
-  text-align: left;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 .home_shopNow h2 {
   color: #ffffff;
@@ -41,7 +44,7 @@
   width: 40%;
 }
 .home_img img {
-  width: 100%;
+  width: 90%;
 }
 .home_product {
   margin: 50px 0;

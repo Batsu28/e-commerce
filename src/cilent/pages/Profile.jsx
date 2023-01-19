@@ -7,7 +7,11 @@ export default function Profile(prop) {
     <div className="profile">
       <button
         onClick={() => {
-          return setLoggedIn(false), navigaion("/");
+          return (
+            setLoggedIn(false),
+            navigaion("/"),
+            localStorage.removeItem("currentUser")
+          );
         }}
       >
         Log Out

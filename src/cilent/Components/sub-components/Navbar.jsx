@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { data } from "../../util/data";
+import { data } from "../../../util/data";
 
 export default function Navbar(prop) {
   const { setShowProduct } = prop;
