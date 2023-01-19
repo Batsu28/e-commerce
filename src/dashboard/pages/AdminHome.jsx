@@ -1,3 +1,5 @@
+import "../styles/adminHome.css";
+
 export default function AdminHome() {
-  return <div className="admin_home admin_pages">home</div>;
+	return <div className="admin_pages admin_home">home</div>;
 }

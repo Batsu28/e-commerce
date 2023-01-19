@@ -1,5 +1,5 @@
 import "../styles/order.css";
 
 export default function Order() {
-  return <div className="order admin_pages">order</div>;
+	return <div className="admin_pages order">order</div>;
 }

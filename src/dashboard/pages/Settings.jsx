@@ -1,5 +1,9 @@
 import "../styles/settings.css";
 
 export default function Settings() {
-  return <div className="order admin_pages">Settings</div>;
+	return (
+		<div className="admin_pages setting">
+			<div className=""></div>
+		</div>
+	);
 }
