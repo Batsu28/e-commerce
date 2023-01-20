@@ -21,8 +21,11 @@ import Settings from "./dashboard/pages/Settings";
 function App() {
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [logInuser, setLogIn] = useState(users);
+  const [cartX, setCartX] = useState(0);
   const navigate = useNavigate();
+
   console.log(localStorage.getItem("currentUser"));
+
   function checkLogIn(username, password) {
     logInuser.map((user) => {
       if (user.username === username && user.password === password) {
@@ -41,14 +44,20 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Client isLoggedIn={isLoggedIn} />}>
+        <Route
+          path="/"
+          element={<Client isLoggedIn={isLoggedIn} cartX={cartX} />}
+        >
           <Route path="/" element={<Home />} />
           <Route
             path="/profile"
             element={<Profile setLoggedIn={setLoggedIn} />}
           />
           <Route path="/products" element={<Products />} />
-          <Route path="/products/:id" element={<Product />} />
+          <Route
+            path="/products/:id"
+            element={<Product setCartX={setCartX} cartX={cartX} />}
+          />
           <Route path="/search/:test" element={<Searched />} />
         </Route>
         <Route
@@ -57,7 +66,7 @@ function App() {
             localStorage.getItem("currentUser") == "admin" ? (
               <Dashboard setLoggedIn={setLoggedIn} />
             ) : (
-              <>No access</>
+              <>No asses found</>
             )
           }
         >

@@ -1,10 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import "../../styles/card.css";
 import Cart from "../../../icons/Cart";
+import Header from "../Header";
+import { useState } from "react";
 
 export default function Card(prop) {
   const { product } = prop;
   const navigate = useNavigate();
+
   function salePrice() {
     let price = product.price - product.price * (product.sale / 100);
     return price;

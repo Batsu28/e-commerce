@@ -4,10 +4,13 @@ import Card from "../Components/sub-components/Card";
 import "../styles/product.css";
 import { data } from "../../util/data";
 
-export default function Product() {
+export default function Product(prop) {
   const navigate = useNavigate();
   const urlId = useParams();
+  const { setCartX } = prop;
+  const { cartX } = prop;
   const [quantity, setQuantity] = useState(1);
+
   let product = data.filter((product) => product.id === urlId.id);
   let style =
     product[0].stock !== 0 ? (
@@ -34,6 +37,12 @@ export default function Product() {
   function salePrice() {
     let price = product[0].price - product[0].price * (product[0].sale / 100);
     return price;
+  }
+  function AddtoCart() {
+    localStorage.getItem("currentUser") === "user"
+      ? setCartX(cartX + quantity)
+      : setCartX(0);
+    setQuantity(1);
   }
 
   return (
@@ -82,7 +91,7 @@ export default function Product() {
                 <button onClick={increase}>+</button>
               </div>
               <div className="buy_btn">
-                <button>Add to Cart</button>
+                <button onClick={AddtoCart}>Add to Cart</button>
                 <button>Buy Now</button>
               </div>
             </div>
@@ -109,7 +118,12 @@ export default function Product() {
               )
               .slice(0, 4)
               .map((item, index) => (
-                <Card product={item} key={index} />
+                <Card
+                  product={item}
+                  key={index}
+                  setCartX={setCartX}
+                  cartX={cartX}
+                />
               ))}
           </div>
         </div>
