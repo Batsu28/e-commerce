@@ -5,7 +5,6 @@ import Cart from "../../icons/Cart";
 import { useState } from "react";
 
 export default function Header(prop) {
-  const { isLoggedIn } = prop;
   const { cartX } = prop;
   const navigate = useNavigate();
   const [searchVal, setSearchVal] = useState("");
@@ -17,8 +16,8 @@ export default function Header(prop) {
       console.log("no search input");
     } else {
       navigate(`/search/${searchVal}`);
-      setSearchVal("");
     }
+    setSearchVal("");
   }
 
   return (
