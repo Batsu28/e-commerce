@@ -1,6 +1,8 @@
+header {
+  background: #003585;
+}
 .header {
   padding: 0 50px;
-  background: #003585;
   width: 100%;
   height: 100px;
   display: flex;

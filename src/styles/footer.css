@@ -1,6 +1,8 @@
+footer {
+  background: #003585;
+}
 .footer {
   height: 100px;
-  background: #003585;
   display: flex;
   justify-content: center;
   align-items: center;

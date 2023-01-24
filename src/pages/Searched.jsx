@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import Card from "../Components/sub-components/Card";
-import { data } from "../../util/data";
+import { data } from "../util/data";
 import "../styles/searched.css";
 
 export default function Searched() {

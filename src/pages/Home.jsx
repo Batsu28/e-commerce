@@ -3,30 +3,31 @@ import { useNavigate } from "react-router-dom";
 import Card from "../Components/sub-components/Card";
 import Navbar from "../Components/sub-components/Navbar";
 import "../styles/home.css";
-import { data, category } from "../../util/data";
+import { data, category } from "../util/data";
 
 export default function Home() {
   const navigate = useNavigate();
   const [showProduct, setShowProduct] = useState(data);
+  const [catVal, setCatVal] = useState("pop");
 
-  function filterName(value) {
-    if (value.toLowerCase() === "popular") {
+  function filterName(category) {
+    if (category.name.toLowerCase() === "popular") {
       setShowProduct(data);
+      setCatVal(category.val);
     } else {
       let filteredData = data.filter(
-        (product) => product.category === value.toLowerCase()
+        (product) => product.category === category.name.toLowerCase(),
+        setCatVal(category.val)
       );
       setShowProduct(filteredData);
     }
-
-    console.log(value.toLowerCase());
   }
 
   return (
     <main>
-      <div className="container">
-        <div className="home">
-          <div className="home_top">
+      <div className="home_top">
+        <div className="container">
+          <div className="home_top_center">
             <div className="home_shopNow">
               <h2>
                 <b>Canon</b> camera
@@ -45,10 +46,18 @@ export default function Home() {
               <img src="./image/camera.png" alt="camera" />
             </div>
           </div>
+        </div>
+      </div>
+      <div className="container">
+        <div className="home">
           <div className="home_product">
             <div className="home_nav">
               <p>Popular products</p>
-              <Navbar MENUS={category[0]} filterName={filterName} />
+              <Navbar
+                MENUS={category[0]}
+                filterName={filterName}
+                catVal={catVal}
+              />
             </div>
             <div className="popular_products">
               {showProduct.slice(0, 8).map((product, index) => (

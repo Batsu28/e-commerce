@@ -1,15 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import "../styles/header.css";
-import { data, MENUS } from "../../util/data";
-import Cart from "../../icons/Cart";
+import { data, MENUS } from "../util/data";
+import Cart from "./icons/Cart";
 import { useState } from "react";
+import Person from "./icons/Person";
 
 export default function Header(prop) {
-  const { cartX } = prop;
+  const { cartX, isLoggedIn } = prop;
   const navigate = useNavigate();
   const [searchVal, setSearchVal] = useState("");
 
-  console.log(cartX);
   function SearchPage() {
     console.log(searchVal.split(" ").join(""));
     if (searchVal.split(" ").join("") === "") {
@@ -42,7 +42,7 @@ export default function Header(prop) {
               <button onClick={SearchPage}>Search</button>
             </div>
           </div>
-          {localStorage.getItem("currentUser") === "user" ? (
+          {isLoggedIn ? (
             <div className="after_login">
               <div
                 onClick={() => navigate("/profile")}
@@ -60,7 +60,7 @@ export default function Header(prop) {
               <ul>
                 {MENUS.map((menu, index) => (
                   <li key={index} onClick={() => navigate(menu.url)}>
-                    {menu.image}
+                    <Person />
                     <button>{menu.name}</button>
                   </li>
                 ))}

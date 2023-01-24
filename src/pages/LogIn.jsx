@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import "./login.css";
+import "../styles/login.css";
 
 export default function LogIn(prop) {
   const { checkLogIn } = prop;
