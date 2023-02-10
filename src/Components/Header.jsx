@@ -5,8 +5,7 @@ import Cart from "./icons/Cart";
 import { useState } from "react";
 import Person from "./icons/Person";
 
-export default function Header(prop) {
-  const { cartX, isLoggedIn } = prop;
+export default function Header() {
   const navigate = useNavigate();
   const [searchVal, setSearchVal] = useState("");
 
@@ -42,7 +41,7 @@ export default function Header(prop) {
               <button onClick={SearchPage}>Search</button>
             </div>
           </div>
-          {isLoggedIn ? (
+          {1 ? (
             <div className="after_login">
               <div
                 onClick={() => navigate("/profile")}
@@ -52,7 +51,7 @@ export default function Header(prop) {
               </div>
               <div className="cart">
                 <Cart />
-                <div className="cart_counter">{cartX}</div>
+                <div className="cart_counter"></div>
               </div>
             </div>
           ) : (
