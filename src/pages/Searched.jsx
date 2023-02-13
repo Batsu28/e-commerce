@@ -1,13 +1,16 @@
 import { useParams } from "react-router-dom";
 import Card from "../Components/sub-components/Card";
-import { data } from "../util/data";
 import "../styles/searched.css";
+import { useContext } from "react";
+import { DataContext } from "../App";
 
 export default function Searched() {
+  const { products } = useContext(DataContext);
   const test = useParams();
+
   let searchValue = test.test.split(" ").filter((a) => a !== "");
 
-  let products = data.filter((product) =>
+  let searchedProd = products.filter((product) =>
     product.name.toLowerCase().includes(searchValue.join(" ").toLowerCase())
   );
 
@@ -18,7 +21,7 @@ export default function Searched() {
           <b>Search result:</b> {test.test}
         </p>
         <div className="search_items">
-          {products.map((product, index) => (
+          {searchedProd.map((product, index) => (
             <Card product={product} key={index} />
           ))}
         </div>

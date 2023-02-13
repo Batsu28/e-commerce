@@ -1,17 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { DataContext } from "../App";
 import Card from "../Components/sub-components/Card";
 import "../styles/product.css";
-import { data } from "../util/data";
 
-export default function Product(prop) {
+export default function Product() {
+  const { products } = useContext(DataContext);
   const navigate = useNavigate();
   const urlId = useParams();
-  const { setCartX } = prop;
-  const { cartX } = prop;
   const [quantity, setQuantity] = useState(1);
 
-  let product = data.filter((product) => product.id === urlId.id);
+  let product = products.filter((product) => product.id === urlId.id);
   let style =
     product[0].stock !== 0 ? (
       <div style={{ color: "green" }}>

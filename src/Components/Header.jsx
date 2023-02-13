@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import "../styles/header.css";
-import { data, MENUS } from "../util/data";
+import { MENUS } from "../util/data";
 import Cart from "./icons/Cart";
 import { useState } from "react";
 import Person from "./icons/Person";

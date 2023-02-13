@@ -1,26 +1,31 @@
-import { useState } from "react";
+import axios from "axios";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { DataContext } from "../App";
 import Card from "../Components/sub-components/Card";
 import Navbar from "../Components/sub-components/Navbar";
 import "../styles/home.css";
-import { data, category } from "../util/data";
+import { category } from "../util/data";
 
 export default function Home() {
+  // const { products, setProducts } = useContext(DataContext);
   const navigate = useNavigate();
-  const [showProduct, setShowProduct] = useState(data);
+  const [showProduct, setShowProduct] = useState(products);
   const [catVal, setCatVal] = useState("pop");
 
+  useEffect(() => {
+    axios
+      .get(`http://localhost:2000/productsFilter/popular/0`)
+      .then((res) => setShowProduct(res.data));
+  }, []);
+
   function filterName(category) {
-    if (category.name.toLowerCase() === "popular") {
-      setShowProduct(data);
-      setCatVal(category.val);
-    } else {
-      let filteredData = data.filter(
-        (product) => product.category === category.name.toLowerCase(),
-        setCatVal(category.val)
-      );
-      setShowProduct(filteredData);
-    }
+    setCatVal(category.val);
+    let cate = category.name.toLowerCase();
+    console.log(cate);
+    axios
+      .get(`http://localhost:2000/productsFilter/${cate}/0`)
+      .then((res) => setShowProduct(res.data));
   }
 
   return (
@@ -60,9 +65,12 @@ export default function Home() {
               />
             </div>
             <div className="popular_products">
-              {showProduct.slice(0, 8).map((product, index) => (
-                <Card product={product} key={index} />
-              ))}
+              {showProduct &&
+                showProduct
+                  .slice(0, 8)
+                  .map((product, index) => (
+                    <Card product={product} key={index} />
+                  ))}
             </div>
             <button
               className="home_seeAll"

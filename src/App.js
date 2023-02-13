@@ -36,21 +36,25 @@ function App() {
       .get("http://localhost:2000/products")
       .then((res) => setProducts(res.data));
   }, []);
+
   console.log(products);
+
   return (
     <div className="App">
-      <Header />
+      <DataContext.Provider value={{ products, setProducts }}>
+        <Header />
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/products/:id" element={<Product />} />
-        <Route path="/search/:test" element={<Searched />} />
-        <Route path="/login" element={<LogIn checkLogIn={checkLogIn} />} />
-      </Routes>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/products/:id" element={<Product />} />
+          <Route path="/search/:test" element={<Searched />} />
+          <Route path="/login" element={<LogIn checkLogIn={checkLogIn} />} />
+        </Routes>
 
-      <Footer />
+        <Footer />
+      </DataContext.Provider>
     </div>
   );
 }

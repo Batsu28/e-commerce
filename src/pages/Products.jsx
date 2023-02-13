@@ -1,21 +1,23 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { DataContext } from "../App";
 import Card from "../Components/sub-components/Card";
 import Navbar from "../Components/sub-components/Navbar";
 import "../styles/products.css";
-import { data, category } from "../util/data";
+import { category } from "../util/data";
 
 export default function Products() {
-  const [showProduct, setShowProduct] = useState(data);
+  const { products } = useContext(DataContext);
+  const [showProduct, setShowProduct] = useState(products);
   const [catVal, setCatVal] = useState("all");
-
+  console.log(Products);
   function filterName(category) {
     if (category.name.toLowerCase() === "all") {
-      setShowProduct(data), setCatVal(category.val);
+      setShowProduct(products), setCatVal(category.val);
     } else if (category.name.toLowerCase() === "sale") {
-      let filteredData = data.filter((product) => product.sale > 0);
+      let filteredData = products.filter((product) => product.sale > 0);
       setShowProduct(filteredData), setCatVal(category.val);
     } else {
-      let filteredData = data.filter(
+      let filteredData = products.filter(
         (product) => product.category === category.name.toLowerCase()
       );
       setShowProduct(filteredData), setCatVal(category.val);
@@ -27,9 +29,10 @@ export default function Products() {
         <Navbar MENUS={category[1]} filterName={filterName} catVal={catVal} />
 
         <div className="all_products">
-          {showProduct.map((product, index) => (
-            <Card product={product} key={index} />
-          ))}
+          {showProduct &&
+            showProduct.map((product, index) => (
+              <Card product={product} key={index} />
+            ))}
         </div>
       </div>
     </div>
