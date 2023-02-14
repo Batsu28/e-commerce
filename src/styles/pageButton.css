@@ -1,0 +1,15 @@
+.inactive_btn {
+  border: none;
+  height: 30px;
+  margin: 5px;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: 700;
+  width: auto;
+  background: inherit;
+  color: #ccc;
+}
+.active_btn {
+  color: #cf2e2e;
+  border-bottom: #cf2e2e solid 1px;
+}

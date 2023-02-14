@@ -9,6 +9,9 @@ header {
   justify-content: space-between;
   align-items: center;
 }
+.header_logo {
+  color: #fff;
+}
 .seatch_sect {
   width: 50%;
   display: flex;

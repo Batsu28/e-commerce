@@ -1,8 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import "../../styles/card.css";
 import Cart from "../icons/Cart";
-import Header from "../Header";
-import { useState } from "react";
 
 export default function Card(prop) {
   const { product } = prop;
@@ -17,7 +15,7 @@ export default function Card(prop) {
     <div
       className="card"
       onClick={() => {
-        navigate(`/products/${product.id}`);
+        navigate(`/product/${product.id}`);
       }}
     >
       {product.sale > 0 ? (

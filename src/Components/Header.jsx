@@ -4,6 +4,7 @@ import { MENUS } from "../util/data";
 import Cart from "./icons/Cart";
 import { useState } from "react";
 import Person from "./icons/Person";
+import MainLogo from "./icons/MainLogo";
 
 export default function Header() {
   const navigate = useNavigate();
@@ -23,12 +24,8 @@ export default function Header() {
     <header>
       <div className="container">
         <div className="header">
-          <div className="header_logo">
-            <img
-              src="./image/logo.png"
-              alt="logo"
-              onClick={() => navigate("/")}
-            />
+          <div className="header_logo" onClick={() => navigate("/")}>
+            <MainLogo />
           </div>
           <div className="seatch_sect">
             <div className="header_search">
@@ -41,7 +38,7 @@ export default function Header() {
               <button onClick={SearchPage}>Search</button>
             </div>
           </div>
-          {1 ? (
+          {localStorage.getItem("currentUser") ? (
             <div className="after_login">
               <div
                 onClick={() => navigate("/profile")}

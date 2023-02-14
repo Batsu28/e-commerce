@@ -1,27 +1,31 @@
-import { useContext, useState } from "react";
-import { DataContext } from "../App";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import Card from "../Components/sub-components/Card";
 import Navbar from "../Components/sub-components/Navbar";
+import Pagination from "../Components/sub-components/Pagination";
 import "../styles/products.css";
 import { category } from "../util/data";
 
 export default function Products() {
-  const { products } = useContext(DataContext);
-  const [showProduct, setShowProduct] = useState(products);
+  const [showProduct, setShowProduct] = useState();
   const [catVal, setCatVal] = useState("all");
-  console.log(Products);
+  const [pageNum, setPageNum] = useState();
+
+  console.log("products", pageNum);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:2000/productsFilter/all/1`)
+      .then((res) => setShowProduct(res.data));
+  }, []);
+
   function filterName(category) {
-    if (category.name.toLowerCase() === "all") {
-      setShowProduct(products), setCatVal(category.val);
-    } else if (category.name.toLowerCase() === "sale") {
-      let filteredData = products.filter((product) => product.sale > 0);
-      setShowProduct(filteredData), setCatVal(category.val);
-    } else {
-      let filteredData = products.filter(
-        (product) => product.category === category.name.toLowerCase()
-      );
-      setShowProduct(filteredData), setCatVal(category.val);
-    }
+    setCatVal(category.val);
+    let cate = category.name.toLowerCase();
+    console.log(cate);
+    axios
+      .get(`http://localhost:2000/productsFilter/${cate}/${1}`)
+      .then((res) => setShowProduct(res.data));
   }
   return (
     <div className="container">
@@ -34,6 +38,7 @@ export default function Products() {
               <Card product={product} key={index} />
             ))}
         </div>
+        <Pagination setPageNum={setPageNum} pageNum={pageNum} />
       </div>
     </div>
   );

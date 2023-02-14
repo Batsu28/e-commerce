@@ -1,7 +1,7 @@
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { DataContext } from "../App";
+
 import Card from "../Components/sub-components/Card";
 import Navbar from "../Components/sub-components/Navbar";
 import "../styles/home.css";
@@ -10,7 +10,7 @@ import { category } from "../util/data";
 export default function Home() {
   // const { products, setProducts } = useContext(DataContext);
   const navigate = useNavigate();
-  const [showProduct, setShowProduct] = useState(products);
+  const [showProduct, setShowProduct] = useState();
   const [catVal, setCatVal] = useState("pop");
 
   useEffect(() => {
@@ -39,7 +39,7 @@ export default function Home() {
               </h2>
               <div>
                 <button
-                  onClick={() => navigate("/products")}
+                  onClick={() => navigate("/products/page/1")}
                   className="shop_now"
                 >
                   Shop Now
@@ -74,7 +74,7 @@ export default function Home() {
             </div>
             <button
               className="home_seeAll"
-              onClick={() => navigate("/products")}
+              onClick={() => navigate("/products/page/1")}
             >
               See All
             </button>

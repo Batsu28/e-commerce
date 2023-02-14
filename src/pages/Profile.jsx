@@ -1,17 +1,13 @@
 import { useNavigate } from "react-router-dom";
 
-export default function Profile(prop) {
+export default function Profile() {
   const navigaion = useNavigate();
-  const { setLoggedIn } = prop;
+
   return (
     <div className="profile">
       <button
         onClick={() => {
-          return (
-            setLoggedIn(false),
-            navigaion("/"),
-            localStorage.removeItem("currentUser")
-          );
+          return navigaion("/"), localStorage.removeItem("currentUser");
         }}
       >
         Log Out

@@ -1,11 +1,8 @@
 import { useParams } from "react-router-dom";
 import Card from "../Components/sub-components/Card";
 import "../styles/searched.css";
-import { useContext } from "react";
-import { DataContext } from "../App";
 
 export default function Searched() {
-  const { products } = useContext(DataContext);
   const test = useParams();
 
   let searchValue = test.test.split(" ").filter((a) => a !== "");
