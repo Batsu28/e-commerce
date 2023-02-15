@@ -23,7 +23,7 @@ export default function Pagination(prop) {
       return (
         <div className="num_btn">
           <Link
-            to={`/products/page/${pageNum}`}
+            to={`/products/${urlNum.name}/page/${pageNum}`}
             onClick={() =>
               setCurrentPage(pageNum === 2 ? pageNum - 1 : pageNum)
             }
@@ -34,7 +34,7 @@ export default function Pagination(prop) {
             />
           </Link>
           <Link
-            to={`/products/page/${pageNum + 1}`}
+            to={`/products/${urlNum.name}/page/${pageNum + 1}`}
             onClick={() =>
               setCurrentPage(pageNum === 2 ? pageNum : pageNum + 1)
             }
@@ -45,19 +45,19 @@ export default function Pagination(prop) {
             />
           </Link>
           <Link
-            to={`/products/page/${pageNum + 2}`}
+            to={`/products/${urlNum.name}/page/${pageNum + 2}`}
             onClick={() => setCurrentPage(pageNum + 2)}
           >
             <PageButton name={pageNum === 2 ? pageNum + 1 : pageNum + 2} />
           </Link>
           <Link
-            to={`/products/page/${pageNum + 3}`}
+            to={`/products/${urlNum.name}/page/${pageNum + 3}`}
             onClick={() => setCurrentPage(pageNum + 3)}
           >
             <PageButton name={pageNum === 2 ? pageNum + 2 : pageNum + 3} />
           </Link>
           <Link
-            to={`/products/page/${pageNum + 4}`}
+            to={`/products/${urlNum.name}/page/${pageNum + 4}`}
             onClick={() => setCurrentPage(pageNum + 4)}
           >
             <PageButton name={pageNum === 2 ? pageNum + 3 : pageNum + 4} />
@@ -68,7 +68,7 @@ export default function Pagination(prop) {
       return (
         <div className="num_btn">
           <Link
-            to={`/products/page/${pageNum - 4}`}
+            to={`/products/${urlNum.name}/page/${pageNum - 4}`}
             onClick={() =>
               setCurrentPage(
                 pageNum === lastPage - 1 ? pageNum - 3 : pageNum - 4
@@ -80,7 +80,7 @@ export default function Pagination(prop) {
             />
           </Link>
           <Link
-            to={`/products/page/${pageNum - 3}`}
+            to={`/products/${urlNum.name}/page/${pageNum - 3}`}
             onClick={() =>
               setCurrentPage(
                 pageNum === lastPage - 1 ? pageNum - 2 : pageNum - 3
@@ -92,7 +92,7 @@ export default function Pagination(prop) {
             />
           </Link>
           <Link
-            to={`/products/page/${pageNum - 2}`}
+            to={`/products/${urlNum.name}/page/${pageNum - 2}`}
             onClick={() =>
               setCurrentPage(
                 pageNum === lastPage - 1 ? pageNum - 1 : pageNum - 2
@@ -104,7 +104,7 @@ export default function Pagination(prop) {
             />
           </Link>
           <Link
-            to={`/products/page/${pageNum - 1}`}
+            to={`/products/${urlNum.name}/page/${pageNum - 1}`}
             onClick={() =>
               setCurrentPage(pageNum === lastPage - 1 ? pageNum : pageNum - 1)
             }
@@ -115,7 +115,7 @@ export default function Pagination(prop) {
             />
           </Link>
           <Link
-            to={`/products/page/${pageNum}`}
+            to={`/products/${urlNum.name}/page/${pageNum}`}
             onClick={() =>
               setCurrentPage(pageNum === lastPage - 1 ? pageNum + 1 : pageNum)
             }
@@ -131,31 +131,31 @@ export default function Pagination(prop) {
       return (
         <div className="num_btn">
           <Link
-            to={`/products/page/${pageNum - 2}`}
+            to={`/products/${urlNum.name}/page/${pageNum - 2}`}
             onClick={() => setCurrentPage(pageNum - 2)}
           >
             <PageButton name={pageNum - 2} />
           </Link>
           <Link
-            to={`/products/page/${pageNum - 1}`}
+            to={`/products/${urlNum.name}/page/${pageNum - 1}`}
             onClick={() => setCurrentPage(pageNum - 1)}
           >
             <PageButton name={pageNum - 1} />
           </Link>
           <Link
-            to={`/products/page/${pageNum}`}
+            to={`/products/${urlNum.name}/page/${pageNum}`}
             onClick={() => setCurrentPage(pageNum)}
           >
             <PageButton name={pageNum} className={"active_btn"} />
           </Link>
           <Link
-            to={`/products/page/${pageNum + 1}`}
+            to={`/products/${urlNum.name}/page/${pageNum + 1}`}
             onClick={() => setCurrentPage(pageNum + 1)}
           >
             <PageButton name={pageNum + 1} />
           </Link>
           <Link
-            to={`/products/page/${pageNum + 2}`}
+            to={`/products/${urlNum.name}/page/${pageNum + 2}`}
             onClick={() => setCurrentPage(pageNum + 2)}
           >
             <PageButton name={pageNum + 2} />
@@ -170,8 +170,8 @@ export default function Pagination(prop) {
       <Link
         to={
           pageNum === 1
-            ? `/products/page/${pageNum}`
-            : `/products/page/${pageNum - 1}`
+            ? `/products/${urlNum.name}/page/${pageNum}`
+            : `/products/${urlNum.name}/page/${pageNum - 1}`
         }
         onClick={() => pageNum !== 1 && setCurrentPage(pageNum - 1)}
       >
@@ -182,8 +182,8 @@ export default function Pagination(prop) {
       <Link
         to={
           pageNum === lastPage
-            ? `/products/page/${pageNum}`
-            : `/products/page/${pageNum + 1}`
+            ? `/products/${urlNum.name}/page/${pageNum}`
+            : `/products/${urlNum.name}/page/${pageNum + 1}`
         }
         onClick={() => pageNum !== lastPage && setCurrentPage(pageNum + 1)}
       >

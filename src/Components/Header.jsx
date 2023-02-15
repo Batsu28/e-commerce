@@ -5,6 +5,7 @@ import Cart from "./icons/Cart";
 import { useState } from "react";
 import Person from "./icons/Person";
 import MainLogo from "./icons/MainLogo";
+import Backet from "./sub-components/BasketCanvas";
 
 export default function Header() {
   const navigate = useNavigate();
@@ -47,8 +48,7 @@ export default function Header() {
                 Profile
               </div>
               <div className="cart">
-                <Cart />
-                <div className="cart_counter"></div>
+                <Backet />
               </div>
             </div>
           ) : (

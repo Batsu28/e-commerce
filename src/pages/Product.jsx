@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Card from "../Components/sub-components/Card";
 import "../styles/product.css";
+
 export default function Product() {
   const navigate = useNavigate();
   const [product, setProduct] = useState();
@@ -44,12 +45,7 @@ export default function Product() {
     let price = product.price - product.price * (product.sale / 100);
     return price;
   }
-  function AddtoCart() {
-    localStorage.getItem("currentUser") === "user"
-      ? setCartX(cartX + quantity)
-      : setCartX(0);
-    setQuantity(1);
-  }
+  function AddtoCart() {}
 
   return (
     <div className="container">

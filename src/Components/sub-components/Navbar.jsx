@@ -1,7 +1,8 @@
-import { data } from "../../util/data";
+import { useParams } from "react-router-dom";
 
 export default function Navbar(prop) {
   const { filterName, MENUS, catVal } = prop;
+  const urlNum = useParams();
 
   return (
     <nav>
@@ -10,7 +11,11 @@ export default function Navbar(prop) {
           <li key={index}>
             <button
               onClick={() => filterName(menu)}
-              className={catVal === menu.val ? "active" : "inactive"}
+              className={
+                urlNum.name === menu.name || catVal === menu.val
+                  ? "active"
+                  : "inactive"
+              }
             >
               {menu.name.toUpperCase()}
             </button>

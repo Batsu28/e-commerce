@@ -1,4 +1,4 @@
-.card {
+.product_card {
   position: relative;
   border: 1px solid #b6b6b6;
   border-radius: 15px;
@@ -28,8 +28,7 @@
   align-items: center;
 }
 .card_img img {
-  width: auto;
-  height: 100%;
+  height: 95%;
 }
 .card_body {
   display: flex;

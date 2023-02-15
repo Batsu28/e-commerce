@@ -15,6 +15,7 @@ export default function LogIn() {
   }, []);
 
   function logInHandler(e) {
+    e.preventDefault();
     let username = e.target.username.value;
     let password = e.target.password.value;
     axios
@@ -32,10 +33,9 @@ export default function LogIn() {
       .catch((res) => setErrorMes(res.response.data.message));
   }
   console.log(currentUser);
-
+  console.log(errorMes);
   return (
     <div className="login">
-      <div onClick={() => navigate("/")} className="login_close"></div>
       <form className="login_box" onSubmit={logInHandler}>
         <div className="login_logo">
           <MainLogo />

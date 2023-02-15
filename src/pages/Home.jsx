@@ -39,7 +39,7 @@ export default function Home() {
               </h2>
               <div>
                 <button
-                  onClick={() => navigate("/products/page/1")}
+                  onClick={() => navigate("/products/all/page/1")}
                   className="shop_now"
                 >
                   Shop Now
@@ -74,7 +74,7 @@ export default function Home() {
             </div>
             <button
               className="home_seeAll"
-              onClick={() => navigate("/products/page/1")}
+              onClick={() => navigate("/products/all/page/1")}
             >
               See All
             </button>

@@ -13,7 +13,7 @@ export default function Card(prop) {
 
   return (
     <div
-      className="card"
+      className="product_card"
       onClick={() => {
         navigate(`/product/${product.id}`);
       }}
