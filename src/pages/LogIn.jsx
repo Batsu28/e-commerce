@@ -1,38 +1,13 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import MainLogo from "../Components/icons/MainLogo";
+import { UserContext } from "../context/UserContext";
 import "../styles/login.css";
 
 export default function LogIn() {
-  const [currentUser, setCurrentUser] = useState();
-  const [errorMes, setErrorMes] = useState();
-  const navigate = useNavigate();
+  const { logInHandler, errorMes } = useContext(UserContext);
 
-  useEffect(() => {
-    if (localStorage.getItem("currentUser"))
-      setCurrentUser(JSON.parse(localStorage.getItem("currentUser")));
-  }, []);
-
-  function logInHandler(e) {
-    e.preventDefault();
-    let username = e.target.username.value;
-    let password = e.target.password.value;
-    axios
-      .post("http://localhost:2000/user-log-in", {
-        username,
-        password,
-      })
-      .then(
-        (res) => (
-          setCurrentUser(res.data),
-          localStorage.setItem("currentUser", JSON.stringify(res.data)),
-          navigate("/")
-        )
-      )
-      .catch((res) => setErrorMes(res.response.data.message));
-  }
-  console.log(currentUser);
   console.log(errorMes);
   return (
     <div className="login">

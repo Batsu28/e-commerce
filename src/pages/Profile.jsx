@@ -1,17 +1,12 @@
-import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../context/UserContext";
 
 export default function Profile() {
-  const navigaion = useNavigate();
+  const { logOutHandler } = useContext(UserContext);
 
   return (
     <div className="profile">
-      <button
-        onClick={() => {
-          return navigaion("/"), localStorage.removeItem("currentUser");
-        }}
-      >
-        Log Out
-      </button>
+      <button onClick={logOutHandler}>Log Out</button>
     </div>
   );
 }

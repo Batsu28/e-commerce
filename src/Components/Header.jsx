@@ -1,13 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import "../styles/header.css";
 import { MENUS } from "../util/data";
-import Cart from "./icons/Cart";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Person from "./icons/Person";
 import MainLogo from "./icons/MainLogo";
-import Backet from "./sub-components/BasketCanvas";
+import BacketCanvas from "./sub-components/BasketCanvas";
+import { UserContext } from "../context/UserContext";
 
 export default function Header() {
+  const { currentUser } = useContext(UserContext);
   const navigate = useNavigate();
   const [searchVal, setSearchVal] = useState("");
 
@@ -39,7 +40,7 @@ export default function Header() {
               <button onClick={SearchPage}>Search</button>
             </div>
           </div>
-          {localStorage.getItem("currentUser") ? (
+          {currentUser ? (
             <div className="after_login">
               <div
                 onClick={() => navigate("/profile")}
@@ -48,7 +49,7 @@ export default function Header() {
                 Profile
               </div>
               <div className="cart">
-                <Backet />
+                <BacketCanvas />
               </div>
             </div>
           ) : (
